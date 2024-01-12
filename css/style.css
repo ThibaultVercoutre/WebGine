@@ -421,12 +421,6 @@ header .bottom .title span{
     #Tarifs .bottom > div .cards {
         gap: 10px;
     }
-}
-
-@media screen and (max-width: 1024px) {
-    #Tarifs .bottom > div .cards {
-        grid-template-columns: repeat(3, 1fr);
-    }
     
     #Tarifs .bottom > div .cards .simple{
         grid-column: 1;
@@ -438,6 +432,12 @@ header .bottom .title span{
     
     #Tarifs .bottom > div .cards .custom{
         grid-column: 3;
+    }
+}
+
+@media screen and (max-width: 1024px) {
+    #Tarifs .bottom > div .cards {
+        grid-template-columns: repeat(3, 1fr);
     }
 }
 
@@ -608,18 +608,6 @@ header .bottom .title span{
     --complexe-2: #017dd0;
     --custom-1: #45043d;
     --custom-2: #b40cb4;
-}
-
-#Tarifs .bottom > div .cards .simple{
-    grid-column: 2;
-}
-
-#Tarifs .bottom > div .cards .complexe{
-    grid-column: 3;
-}
-
-#Tarifs .bottom > div .cards .custom{
-    grid-column: 3;
 }
 
 #Tarifs .bottom .bot_discord .cards .simple{
