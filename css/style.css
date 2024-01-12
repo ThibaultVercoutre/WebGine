@@ -390,10 +390,31 @@ header .bottom .title span{
     padding: 20px;
 }
 
+#Tarifs .bottom > div .center{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 #Tarifs .bottom > div .cards{
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(5, 1fr);
+    
+    /* grid-auto-flow: column; */
     gap: 30px;
+    justify-content: center;
+}
+
+#Tarifs .bottom > div .cards .simple{
+    grid-column: 2;
+}
+
+#Tarifs .bottom > div .cards .complexe{
+    grid-column: 3;
+}
+
+#Tarifs .bottom > div .cards .custom{
+    grid-column: 4;
 }
 
 @media screen and (max-width: 1200px) {
@@ -405,6 +426,18 @@ header .bottom .title span{
 @media screen and (max-width: 1024px) {
     #Tarifs .bottom > div .cards {
         grid-template-columns: repeat(3, 1fr);
+    }
+    
+    #Tarifs .bottom > div .cards .simple{
+        grid-column: 1;
+    }
+    
+    #Tarifs .bottom > div .cards .complexe{
+        grid-column: 2;
+    }
+    
+    #Tarifs .bottom > div .cards .custom{
+        grid-column: 3;
     }
 }
 
@@ -421,7 +454,7 @@ header .bottom .title span{
 }
 
 #Tarifs .bottom div .cards > div{
-    height: 400px;
+    min-height: 300px;
     border-radius: 20px;
     display: flex;
     cursor: pointer;
@@ -575,6 +608,18 @@ header .bottom .title span{
     --complexe-2: #017dd0;
     --custom-1: #45043d;
     --custom-2: #b40cb4;
+}
+
+#Tarifs .bottom > div .cards .simple{
+    grid-column: 2;
+}
+
+#Tarifs .bottom > div .cards .complexe{
+    grid-column: 3;
+}
+
+#Tarifs .bottom > div .cards .custom{
+    grid-column: 3;
 }
 
 #Tarifs .bottom .bot_discord .cards .simple{
@@ -884,6 +929,7 @@ header .bottom .title span{
 #Contact > div .informations a {
     text-decoration: none;
     color: #dddddd;
+    display: flex;
 }
 
 #Contact > div .informations a > div{
@@ -899,6 +945,10 @@ header .bottom .title span{
     padding: 1em 2em;
     position: relative;
     text-align: center;
+}
+
+#Contact > div .informations a > div:nth-child(1){
+    flex: 1;
 }
 
 @media screen and (max-width: 900px) {
