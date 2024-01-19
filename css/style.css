@@ -1183,9 +1183,6 @@ header .bottom .title span{
     align-items: center;
 }
 
-#Contact > div .informations .box_mail > div > span{
-}
-
 @media screen and (max-width: 1024px) {
     #Contact .top .middle {
         font-size: 30px;
