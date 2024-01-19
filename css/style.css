@@ -32,6 +32,10 @@
     box-sizing: border-box;
 }
 
+html{
+    scroll-behavior: smooth;
+}
+
 body{
     width: 100%;
     background-color: var(--background);
@@ -39,10 +43,30 @@ body{
     color: #dddddd;
 }
 
+.cached_up{
+    background-color: var(--background) !important;
+    filter: drop-shadow(0px 0px -1px var(--header-shadow)) !important;
+    transform: translateY(-50px);
+}
+
+.cached_up::before{
+    box-shadow: calc(var(--title-size)/2) -25px 0px 0px var(--background) !important;
+}
+
 header{
     height: calc(100vh - 20px);
     margin: var(--margin);
     filter: drop-shadow(0px 0px 4px var(--header-shadow));
+    animation: header-appear 1s;
+}
+
+@keyframes header-appear {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }    
 }
 
 header .top{
@@ -64,7 +88,6 @@ header .angle_right{
     box-shadow: -35px 35px 0 0 var(--header);
 }
 
-
 header .top div{
     flex: 1;
 }
@@ -78,6 +101,16 @@ header .top .top_middle{
     display: flex;
     justify-content: center;
     align-items: center;
+    animation: nav-appear 2s;
+}
+
+@keyframes nav-appear {
+    0% {
+        flex: 7;
+    }
+    100% {
+        flex: 5;
+    }    
 }
 
 header .top .top_middle nav{
@@ -88,6 +121,27 @@ header .top .top_middle nav{
     gap: 12.5px;
     align-items: center;
     border-radius: calc(var(--header-size)/2);
+}
+
+header .top .top_middle nav .one{
+    animation: nav-one-appear 1s;
+}
+
+header .top .top_middle nav .two{
+    animation: nav-one-appear 1.5s;
+}
+
+header .top .top_middle nav .three{
+    animation: nav-one-appear 2s;
+}
+
+@keyframes nav-one-appear {
+    0% {
+        transform: translateY(100%);
+    }
+    100% {
+        transform: translateY(0%);
+    }    
 }
 
 header .angle_left, header .angle_right{
@@ -108,6 +162,8 @@ header .top .top_middle .nav{
     transition: 0.3s;
     cursor: pointer;
     background-color: var(--header-nav);
+    text-decoration: none;
+    color: #dddddd;
     /* background-color: red; */
 }
 
@@ -128,6 +184,29 @@ header .bottom{
 
 header .bottom .title{
     font-size: calc(var(--header-size)*3);
+    font-weight: 200;
+    width: 80%;
+    animation: title-appear 2s;
+}
+
+header .bottom .title img{
+    width: 100%;
+    height: 100%;
+}
+
+@keyframes title-appear {
+    0% {
+        transform: translateY(-40%);
+    }
+    100% {
+        transform: translateY(0%);
+    }    
+}
+
+
+header .bottom .title .bold{
+    font-size: calc(var(--header-size)*3);
+    font-weight: 600;
 }
 
 @media screen and (max-width: 1024px) {
@@ -161,6 +240,7 @@ header .bottom .title span{
 
 #Presentation{
     margin: var(--margin);
+    padding-top: var(--margin);
     /* background-color: red; */
     height: calc(100vh - calc(var(--margin)*2));
     display: flex;
@@ -176,7 +256,7 @@ header .bottom .title span{
     }
 }
 
-#Presentation .right, #Presentation .left {
+#Presentation > .right, #Presentation > .left {
     margin: var(--margin);
 }
 
@@ -186,65 +266,77 @@ header .bottom .title span{
     flex-direction: column;
 }
 
-#Presentation .right .presentation{
+#Presentation .right .title1 .presentation{
     display: flex;
     align-items: center;
     padding: 20px;
     background-color: var(--main-color);
-    height: var(--title-size);
-    border-radius: calc(var(--title-size)/2) calc(var(--title-size)/2) 0px calc(var(--title-size)/2);
+    border-radius: 0 calc(var(--title-size)/2) calc(var(--title-size)/2) calc(var(--title-size)/2);
     filter: drop-shadow(0px 0px 4px var(--header-shadow));
+    transition: 1s;
+    font-size: 50px;
+    /* font-weight: 600; */
 }
 
 #Presentation .right .title1, #Presentation .right .title2{
     display: flex;
 }
 
-#Presentation .right .title1 .title_application{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-top: var(--margin);
+#Presentation .right .title1 .left .title_application{
+    padding: 20px;
     margin-right: var(--margin);
-    flex: 2;
-    height: var(--title-size);
-    background-color: var(--main-color);
-    border-radius: calc(var(--title-size)/2) calc(var(--title-size)/2) 0px 0px;
+    border-radius: calc(var(--title-size)/2) calc(var(--title-size)/2) 0 0;
     filter: drop-shadow(0px 0px 4px var(--header-shadow));
-    position: relative;
+    font-size: 30px;
+    margin-top: var(--margin);
+    background-color: var(--main-color);
+    text-align: center;
+}
+
+#Presentation .right .title1 .presentation{
+    /* height: 100%; */
+    margin-bottom: var(--margin);
+}
+
+#Presentation .right .title1 .left{
+    flex: 1;
 }
 
 #Presentation .right .title1 .title_application::before{
+    /* background-color: red; */
     content:'';
     position: absolute;
     width: var(--title-size);
     height: var(--title-size);
     right: 0;
-    top: 0;
+    bottom: 0;
     transform: translate(100%);
     border-radius: 100%;
     box-shadow: -25px calc(var(--title-size)/2) 0px 0px var(--main-color);
 }
 
-#Presentation .right .title1 .empty{
+#Presentation .right .title1 .left .empty{
     flex: 1;
     height: var(--title-size);
     background-color: var(--main-color);
-    border-radius: 0px 0px calc(var(--title-size)/2) calc(var(--title-size)/2);
+    border-radius: calc(var(--title-size)/2) 0 0 calc(var(--title-size)/2);
     position: relative;
     filter: drop-shadow(0px 0px 4px var(--header-shadow));
+    transition: 1s;
 }
 
-#Presentation .right .title1 .empty::before{
+#Presentation .right .title1 .left .empty::before{
     content:'';
     position: absolute;
     width: var(--title-size);
     height: var(--title-size);
-    left: 0;
+    /* background-color: red; */
+    right: 0;
     top: 0;
-    transform: translate(-100%);
+    transform: translateY(100%);
     border-radius: 100%;
     box-shadow: calc(var(--title-size)/2) -25px 0px 0px var(--main-color);
+    transition: 1s;
 }
 
 #Presentation .right .application{
@@ -255,6 +347,8 @@ header .bottom .title span{
     border-radius: 0px calc(var(--title-size)/2) calc(var(--title-size)/2) 0px;
     position: relative;
     filter: drop-shadow(0px 0px 4px var(--header-shadow));
+    font-size: 25px;
+    line-height: 2;
 }
 
 #Presentation .right .title2 .empty{
@@ -290,6 +384,7 @@ header .bottom .title span{
     border-radius: calc(var(--title-size)/2) calc(var(--title-size)/2) 0px 0px;
     position: relative;
     filter: drop-shadow(0px 0px 4px var(--header-shadow));
+    font-size: 30px;
 }
 
 #Presentation .right .title2 .title_bot::before{
@@ -312,19 +407,114 @@ header .bottom .title span{
     border-radius: calc(var(--title-size)/2) 0px calc(var(--title-size)/2) calc(var(--title-size)/2);
     position: relative;
     filter: drop-shadow(0px 0px 4px var(--header-shadow));
+    font-size: 25px;
+    line-height: 2;
 }
 
-#Presentation .left{
+@media screen and (max-width: 1424px) {
+    #Presentation .right .bot, #Presentation .right .application{
+        line-height: 1.5;
+    }
+    
+}
+
+#Presentation > .left{
     flex: 1;
     background-color: var(--main-color);
     border-radius: calc(var(--header-size)/2);
     filter: drop-shadow(0px 0px 4px var(--header-shadow));
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: space-evenly;
+}
+
+#Presentation > .left > div{
+    margin: var(--margin);
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+#Presentation > .left > div .top{
+    display: flex;
+}
+
+#Presentation > .left > div .left, #Presentation > .left > div .right{
+    flex: 1;
+    position: relative;
+}
+
+#Presentation > .left > div .left::before{
+    content: '';
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    width: 40px;
+    height: 40px;
+    border-radius: 100%;
+    box-shadow: 20px 20px 0px 0px var(--header);
+    z-index: -1;
+}
+
+#Presentation > .left > div .right::before{
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 40px;
+    height: 40px;
+    border-radius: 100%;
+    box-shadow: -20px 20px 0px 0px var(--header);
+    z-index: -1;
+}
+
+#Presentation > .left > div .middle{
+    flex: 5;
+    padding: 10px;
+    text-align: center;
+    background-color: var(--header);
+    border-radius: 15px 15px 0 0;
+}
+
+/* #Presentation > .left .site{
+    background-color: red;
+}
+
+#Presentation > .left .application{
+    background-color: green;
+} */
+
+#Presentation > .left > div > .exemples{
+    flex:1;
+    background-color: var(--header);
+    border-radius: 15px;
+    padding: var(--margin);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+#Presentation > .left > div > .exemples > div{
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 10px;
+    text-align: center;
+    border-radius: 15px;
+    height: 50px;
 }
 
 /* Tarifs */
 
 #Tarifs{
     margin: var(--margin);
+    padding-top: var(--margin);
     /* background-color: red; */
     min-height: calc(100vh - calc(var(--margin)*2));
     /* justify-content: center; */
@@ -397,60 +587,19 @@ header .bottom .title span{
 }
 
 #Tarifs .bottom > div .cards{
-    display: grid;
+    /* display: grid;
     grid-template-columns: repeat(5, 1fr);
     
-    /* grid-auto-flow: column; */
-    gap: 30px;
+    /* grid-auto-flow: column;
+    gap: 30px; */
+    display: flex;
     justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap;
 }
 
-#Tarifs .bottom > div .cards .simple{
-    grid-column: 2;
-}
-
-#Tarifs .bottom > div .cards .complexe{
-    grid-column: 3;
-}
-
-#Tarifs .bottom > div .cards .custom{
-    grid-column: 4;
-}
-
-@media screen and (max-width: 1200px) {
-    #Tarifs .bottom > div .cards {
-        gap: 10px;
-    }
-    
-    #Tarifs .bottom > div .cards .simple{
-        grid-column: 1;
-    }
-    
-    #Tarifs .bottom > div .cards .complexe{
-        grid-column: 2;
-    }
-    
-    #Tarifs .bottom > div .cards .custom{
-        grid-column: 3;
-    }
-}
-
-@media screen and (max-width: 1024px) {
-    #Tarifs .bottom > div .cards {
-        grid-template-columns: repeat(3, 1fr);
-    }
-}
-
-@media screen and (max-width: 800px) {
-    #Tarifs .bottom > div .cards {
-        grid-template-columns: repeat(2, 1fr);
-    }
-}
-
-@media screen and (max-width: 600px) {
-    #Tarifs .bottom > div .cards {
-        grid-template-columns: repeat(1, 1fr);
-    }
+#Tarifs .bottom > div .cards > div{
+    width: 300px;
 }
 
 #Tarifs .bottom div .cards > div{
@@ -462,8 +611,8 @@ header .bottom .title span{
 }
 
 #Tarifs .bottom > div .cards > div:hover{
-    transform: scale(1.01);
-    filter: drop-shadow(0px 0px 8px var(--header-shadow));
+    /* transform: scale(1.05); */
+    filter: drop-shadow(0px 0px 16px var(--header-shadow));
 }
 
 :root{
@@ -761,6 +910,7 @@ header .bottom .title span{
 
 #Contact{
     margin: var(--margin);
+    padding-top: var(--margin);
     /* background-color: red; */
     height: calc(100vh - calc(var(--margin)*2));
     /* justify-content: center; */
@@ -976,6 +1126,59 @@ header .bottom .title span{
     box-shadow: 0 0.5em 0.5em -0.4em var(--custom-2);
 }
 
+#Contact > div .informations .box_mail{
+    display: flex;
+    justify-content: left;
+}
+
+#Contact > div .informations .box_mail a{
+    flex: 1;
+}
+
+#Contact > div .informations .box_mail > div{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: 0.3s;
+    margin: calc(var(--margin) - 10px);
+}
+
+#Contact > div .informations .box_mail > div svg:hover{
+    background-color: var(--header);
+}
+
+#Contact > div .informations .box_mail > div span{
+    display: none;
+    height: 30px;
+    width: 30px;
+    font-size: 20px;
+    color:#014600;
+    padding: 10px;
+    height: 50px;
+    width: 50px;
+}
+
+#Contact > div .informations .box_mail > div svg{
+    padding: 10px;
+    height: 100%;
+    width: 100%;
+    border-radius: 10px;
+}
+
+#Contact > div .informations .box_mail > div:active svg{
+    display: none;
+}
+
+#Contact > div .informations .box_mail > div:active span{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#Contact > div .informations .box_mail > div > span{
+}
+
 @media screen and (max-width: 1024px) {
     #Contact .top .middle {
         font-size: 30px;
@@ -995,4 +1198,5 @@ footer{
     justify-content: center;
     align-items: center;
     filter: drop-shadow(0px 0px 4px var(--header-shadow));
+    gap: 10px;
 }
