@@ -249,7 +249,7 @@ header .bottom .title span{
     border-radius: calc(var(--header-size)/2);
 }
 
-@media screen and (max-width: 1024px) {
+@media screen and (max-width: 1080px) {
     #Presentation {
         flex-direction: column;
         height: auto;
@@ -414,6 +414,13 @@ header .bottom .title span{
 @media screen and (max-width: 1424px) {
     #Presentation .right .bot, #Presentation .right .application{
         line-height: 1.5;
+    }
+    
+}
+
+@media screen and (max-width: 1250px) {
+    #Presentation .right .bot, #Presentation .right .application{
+        font-size: 20px;
     }
     
 }
