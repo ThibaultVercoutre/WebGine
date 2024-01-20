@@ -4,7 +4,7 @@
     --header: #222D41;
     --main: #3c5073;
     --header-shadow: #374158;
-    --header-size: 70px;
+    --header-size: 100px;
     --header-nav: #374158;
     --header-nav-not-hover: #37415885;
 
@@ -70,22 +70,43 @@ header{
 }
 
 header .top{
-    height: var(--header-size);
+    min-height: var(--header-size);
     width: 100%;
     display: flex;
+    position: relative;
 }
 
-header .angle_left{
-    left: 0;
-    transform: translate(-100%);
-    /* box-shadow: 25px 25px 0 0 var(--header); */
-    box-shadow: 35px 35px 0 0 var(--header);
+header .top_left, header .top_right{
+    position: relative;
 }
 
-header .angle_right{
+header .top_left::before{
+    content: '';
+    position: absolute;
     right: 0;
-    transform: translate(100%);
-    box-shadow: -35px 35px 0 0 var(--header);
+    bottom: 0;
+    /* background-color: red; */
+    height: var(--header-size);
+    width: var(--header-size);
+    border-radius: var(--header-size);
+    /* transform: translate(100%); */
+    /* box-shadow: 25px 25px 0 0 var(--header); */
+    box-shadow: 50px 50px 0 0 var(--header);
+}
+
+header .top_right::before{
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    /* background-color: red; */
+    height: var(--header-size);
+    width: var(--header-size);
+    border-radius: var(--header-size);
+    /* transform: translate(100%); */
+    /* box-shadow: 25px 25px 0 0 var(--header); */
+    box-shadow: -50px 50px 0 0 var(--header);
+    z-index: -1;
 }
 
 header .top div{
@@ -144,16 +165,6 @@ header .top .top_middle nav .three{
     }    
 }
 
-header .angle_left, header .angle_right{
-    position: absolute;
-    top: 0;
-    /* background-color: red; */
-    height: var(--header-size);
-    width: var(--header-size);
-    border-radius: calc(var(--header-size)/2);
-    z-index: -1;
-}
-
 header .top .top_middle .nav{
     flex: 1;
     padding: 10px;
@@ -164,6 +175,7 @@ header .top .top_middle .nav{
     background-color: var(--header-nav);
     text-decoration: none;
     color: #dddddd;
+    font-size: 30px;
     /* background-color: red; */
 }
 
@@ -411,11 +423,22 @@ header .bottom .title span{
     line-height: 2;
 }
 
-@media screen and (max-width: 1424px) {
+@media screen and (max-width: 1700px) {
     #Presentation .right .bot, #Presentation .right .application{
         line-height: 1.5;
+    }  
+}
+
+@media screen and (max-width: 1424px) {
+    #Presentation .right .bot, #Presentation .right .application{
+        line-height: 1.0;
     }
-    
+    #Presentation .right .title1 .left .title_application, #Presentation .right .title2 .title_bot{
+        font-size: 20px;
+    }
+    #Presentation .right .title1 .presentation{
+        font-size: 30px;
+    }
 }
 
 @media screen and (max-width: 1250px) {
@@ -503,6 +526,7 @@ header .bottom .title span{
     flex-wrap: wrap;
     overflow: hidden;
     white-space: nowrap;
+    font-size: 20px;
 }
 
 #Presentation > .left > div > .exemples > div{
@@ -603,6 +627,7 @@ header .bottom .title span{
     justify-content: center;
     gap: 30px;
     flex-wrap: wrap;
+    font-size: 20px;
 }
 
 #Tarifs .bottom > div .cards > div{
@@ -674,9 +699,10 @@ header .bottom .title span{
 }
 
 #Tarifs .bottom > div .cards > div .contenant .title{
-    font-size: 20px;
+    font-size: 25px;
     margin-top: 10px;
     text-align: center;
+    text-decoration: underline;
 }
 
 #Tarifs .bottom > div .cards > div .contenant > div ul{
@@ -919,7 +945,7 @@ header .bottom .title span{
     margin: var(--margin);
     padding-top: var(--margin);
     /* background-color: red; */
-    height: calc(100vh - calc(var(--margin)*2));
+    /* height: calc(100vh - calc(var(--margin)*2)); */
     /* justify-content: center; */
     /* align-items: center; */
     border-radius: calc(var(--header-size)/2);
@@ -1028,7 +1054,7 @@ header .bottom .title span{
 }
 
 #Contact .bottom{
-    height: calc(100% - calc(var(--title-size)*2) - var(--margin));
+    /* height: calc(100% - calc(var(--title-size)*2) - var(--margin)); */
     border-radius: 0px 0px calc(var(--title-size)/2) calc(var(--title-size)/2);
     display: flex;
     gap: var(--margin);
@@ -1075,6 +1101,7 @@ header .bottom .title span{
     text-decoration: none;
     color: #dddddd;
     display: flex;
+    font-size: 20px;
 }
 
 #Contact > div .informations a > div{
@@ -1183,11 +1210,16 @@ header .bottom .title span{
     align-items: center;
 }
 
+@media screen and (max-width: 1200px) {
+    #Contact > div .informations .box_mail .mail{
+        font-size: 15px;
+    }  
+}
+
 @media screen and (max-width: 1024px) {
     #Contact .top .middle {
         font-size: 30px;
-    }
-    
+    }   
 }
 
 /* Footer */
