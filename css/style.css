@@ -144,6 +144,72 @@ header .top .top_middle nav{
     border-radius: calc(var(--header-size)/2);
 }
 
+header .nav_tel{
+    display: none;
+    height: var(--header-size);
+    justify-content: end;
+    position: relative;
+}
+
+header .nav_tel img{
+    height: 100%;
+    padding: var(--margin);
+    background-color: var(--header);
+    border-radius: calc(var(--header-size)/2) calc(var(--header-size)/2) 0 0;
+}
+
+header .nav_tel::before{
+    content: '';
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    /* background-color: red; */
+    right: 0;
+    bottom: 0;
+    transform: translate(-100%);
+    border-radius: 100%;
+    box-shadow: calc(var(--header-size)/2) calc(var(--header-size)/2) 0px 0px var(--header);
+    z-index: -1;
+}
+
+.menu_tel{
+    /* display: none; */
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 100vh;
+    width: 100vw;
+    background-color: var(--header);
+    z-index: 1000;
+    transform-origin: top;
+    transform: scaleY(0);
+    transition: 0.3s;
+}
+
+.open{
+    /* display: block !important; */
+    transform: scaleY(1);
+}
+
+.menu_tel .close{
+    height: var(--header-size);
+    display: flex;
+    justify-content: end;
+    margin: calc(var(--margin)/2);
+}
+
+@media screen and (max-width: 1000px) {
+    header .top{
+        display: none;
+    }
+    header .nav_tel{
+        display: flex;
+    }
+    header .bottom{
+        border-top-right-radius: 0 !important;
+    }
+}
+
 header .top .top_middle nav .one{
     animation: nav-one-appear 1s;
 }
@@ -178,6 +244,32 @@ header .top .top_middle .nav{
     font-size: 30px;
     /* background-color: red; */
 }
+
+.menu_tel .liens{
+    height: calc(100vh - var(--header-size) - calc(var(--margin)*2));
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.menu_tel .liens .nav{
+    width: 50%;
+    height: 150px;
+    padding: 10px;
+    text-align: center;
+    border-radius: 50px;
+    transition: 0.3s;
+    background-color: var(--header-nav);
+    text-decoration: none;
+    color: #dddddd;
+    font-size: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.menu_tel .liens .nav
 
 header .top .top_middle nav:has(.nav:hover) .nav:not(:hover) {
     background-color: var(--header-nav-not-hover);

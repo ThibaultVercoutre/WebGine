@@ -10,6 +10,15 @@ function scrollToElement(element){
     elementToScroll.scrollIntoView({ behavior: 'smooth', block: "center", inline: "nearest" });
 }
 
+function menu(type){
+    if(type == 'open'){
+        document.getElementsByClassName('menu_tel')[0].classList.add('open');
+    }else{
+        document.getElementsByClassName('menu_tel')[0].classList.remove('open');
+    
+    }
+}
+
 // function PageScroll(){
 //     var screenPosition = window.innerHeight;
 
